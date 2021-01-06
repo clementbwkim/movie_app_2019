@@ -1,25 +1,50 @@
-import React from 'react'
-import PropTypes from 'prop-types';
+import React from 'react';
+import axios from 'axios';
+import Movie from './Movie';
+import "./App.css";
 
 class App extends React.Component {
-  //바꿀 데이터를 state 안에 넣는다
-  state = { //state is an object
-    count: 0
+  state = {
+    isLoading: true,
+    movies: []
   };
-  plus = () => {
-    //state를 새로 만들어준다, setState를 사용하지 않으면 새 state와 함께 render()를 호출하지 않는다 
-    this.setState((current) => ({count: current.count + 1})) //setState(((current) => ({count: count.current.count +1})))
-  };
-  minus = () => {
-    this.setState((current) => ({count: current.count - 1}))
-  };
+  //비동기  async, await for what? axios
+  getMovies = async () => {
+    const { 
+      data: {
+        data: { movies }
+      }} = await axios.get('https://yts-proxy.now.sh/list_movies.json?sort_by=rating');
+      this.setState({ movies, isLoading: false });
+    console.log(movies);
+  }
+  componentDidMount() {
+    this.getMovies(); 
+  }
   render() {
+    const { isLoading, movies } = this.state;
     return (
-    <div>
-      <h2>The class number is : { this.state.count }</h2>
-      <button onClick={this.plus}>Plus</button>
-      <button onClick={this.minus}>Minus</button>
-    </div>
+      <section class="container">
+        { isLoading ? (
+          <div class="loader">
+            <span class="loader__text">Loading...</span>
+          </div>
+        ) : (
+          <div class="movies">
+            {movies.map((movie) => (
+              <Movie 
+              key={movie.id}
+              id={movie.id}
+              year={movie.year}
+              title={movie.title}
+              summary={movie.summary}
+              poster={movie.medium_cover_image}
+              />
+            ))
+
+            }
+          </div>
+        )}  
+      </section>
     )
   }
 }
