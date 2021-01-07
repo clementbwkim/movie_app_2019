@@ -25,6 +25,10 @@ body,
   align-items: center;
   font-weight: 300;
 }
+.loader .loader__text{
+  font-size: 3rem;
+  font-weight: 600;
+}
 
 .movies {
   display: flex;
