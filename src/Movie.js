@@ -9,8 +9,8 @@ function Movie({ id, year, title, summary, poster, genres }) { //파라미터 : 
       <div className="movie__data"> 
         <h3 className="movie__title">{title}</h3>
         <h5 className="movie__year">{year}</h5>
-        <p className="movie__summary">{summary.slice(0, 140)}...</p> {/** summary를 0~140까지만 출력 후 ...로 처리 */}
-        <ul className="genres">{genres.map((genre, index) => <li key={index}className="genres__genre">{genre}</li>)}</ul>
+        <ul className="movie__genres">{genres.map((genre, index) => <li key={index}className="genres__genre">{genre}</li>)}</ul>
+        <p className="movie__summary">{summary.slice(0, 150)}...</p> {/** summary를 0~140까지만 출력 후 ...로 처리 */}
       </div>
     </div>
   )
