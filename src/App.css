@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -9,4 +11,12 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: #eff3f7;
   height: 100%;
+}
+
+ul li, ol li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
 }

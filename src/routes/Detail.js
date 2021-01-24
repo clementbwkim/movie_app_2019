@@ -10,11 +10,19 @@ class Detail extends React.Component {
   }
   render() {
     const { location } = this.props;
+    console.log("location", location);
     if(location.state) {
       return (
-        <div className="detail-wrapper">
-          <h2>{location.state.title}</h2>
-          <p>{location.state.summary}</p>
+        <div className="detail-container">
+          <div className="detail-items">
+            <div className="detail-item-img">
+              <img src={location.state.largePoster} alt={location.state.title} title={location.state.title} />
+            </div>
+            <div className="detail-item-texts">
+              <h2>{location.state.title}</h2>
+              <p>{location.state.summary}</p>
+            </div>
+          </div>
         </div>
       )
     }else {
