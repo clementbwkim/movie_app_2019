@@ -20,3 +20,7 @@ ul li, ol li {
 img {
   width: 100%;
 }
+
+#root {
+  position: relative;
+}
